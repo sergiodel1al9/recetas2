@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap-env="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost/recetas2/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost/recetas2/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://localhost/recetas2/"/>
+    </wsdl:types>
+    <wsdl:message name="obtenerNombreRecetaRequest">
+        <wsdl:part name="codigo" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerNombreRecetaResponse">
+        <wsdl:part name="obtenerNombreRecetaReturn" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerTipoRecetaRequest">
+        <wsdl:part name="codigo" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerTipoRecetaResponse">
+        <wsdl:part name="obtenerTipoRecetaReturn" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerPreparacionRecetaRequest">
+        <wsdl:part name="codigo" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerPreparacionRecetaResponse">
+        <wsdl:part name="obtenerPreparacionRecetaReturn" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerPresentacionRecetaRequest">
+        <wsdl:part name="codigo" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerPresentacionRecetaResponse">
+        <wsdl:part name="obtenerPresentacionRecetaReturn" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerIngredientesRecetaRequest">
+        <wsdl:part name="codigo" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerIngredientesRecetaResponse">
+        <wsdl:part name="obtenerIngredientesRecetaReturn" type="soap-enc:array"/>
+    </wsdl:message>
+    <wsdl:portType name="DBPortType">
+        <wsdl:operation name="obtenerNombreReceta">
+            <wsdl:documentation>obtiene el nombre de la receta a partir del codigo</wsdl:documentation>
+            <wsdl:input message="tns:obtenerNombreRecetaRequest"/>
+            <wsdl:output message="tns:obtenerNombreRecetaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerTipoReceta">
+            <wsdl:documentation>obtiene el tipo de receta a partir del codigo</wsdl:documentation>
+            <wsdl:input message="tns:obtenerTipoRecetaRequest"/>
+            <wsdl:output message="tns:obtenerTipoRecetaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerPreparacionReceta">
+            <wsdl:documentation>obtiene la preparacion de la receta a partir del codigo</wsdl:documentation>
+            <wsdl:input message="tns:obtenerPreparacionRecetaRequest"/>
+            <wsdl:output message="tns:obtenerPreparacionRecetaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerPresentacionReceta">
+            <wsdl:documentation>obtiene la presentacion de la receta del codigo</wsdl:documentation>
+            <wsdl:input message="tns:obtenerPresentacionRecetaRequest"/>
+            <wsdl:output message="tns:obtenerPresentacionRecetaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerIngredientesReceta">
+            <wsdl:documentation>obtiene los ingredientes a partir del codgio de receta</wsdl:documentation>
+            <wsdl:input message="tns:obtenerIngredientesRecetaRequest"/>
+            <wsdl:output message="tns:obtenerIngredientesRecetaResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="DBBinding" type="tns:DBPortType">
+        <soap-env:binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="obtenerNombreReceta">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/recetas2/servicio_wsdl.php?method=obtenerNombreReceta" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerTipoReceta">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/recetas2/servicio_wsdl.php?method=obtenerTipoReceta" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerPreparacionReceta">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/recetas2/servicio_wsdl.php?method=obtenerPreparacionReceta" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerPresentacionReceta">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/recetas2/servicio_wsdl.php?method=obtenerPresentacionReceta" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtenerIngredientesReceta">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/recetas2/servicio_wsdl.php?method=obtenerIngredientesReceta" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="DB">
+        <wsdl:documentation/>
+        <wsdl:port name="DBPort" binding="tns:DBBinding">
+            <soap-env:address location="http://localhost/recetas2/servicio_wsdl.php"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
